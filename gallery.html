@@ -86,11 +86,17 @@
   -->
   <link rel="stylesheet" href="style.css">
   <style>
-    .gallery-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
-    .gallery-item { border-radius: 12px; overflow: hidden; box-shadow: var(--shadow); transition: transform .25s, opacity .3s; }
-    .gallery-item:hover { transform: scale(1.03); }
-    .gallery-item .img-wrap { width:100%; height:170px; display:flex; align-items:center; justify-content:center; font-size:56px; }
-    .gallery-item figcaption { padding:10px 14px; font-size:12px; color:var(--muted); font-weight:600; background:#fff; }
+    .gallery-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+    .gallery-item {
+      border-radius: 12px; overflow: hidden; position: relative;
+      box-shadow: var(--shadow); transition: transform .25s, box-shadow .25s;
+      cursor: pointer;
+    }
+    .gallery-item:hover { transform: scale(1.03); box-shadow: 0 10px 30px rgba(10,124,110,.18); }
+    .gallery-item .img-wrap {
+      width: 100%; height: 190px; display: flex;
+      align-items: center; justify-content: center; font-size: 58px;
+    }
     .gallery-item.facility .img-wrap  { background: linear-gradient(135deg,#c8ece8,#a0ddd7); }
     .gallery-item.team .img-wrap      { background: linear-gradient(135deg,#fce4e1,#f9c5c0); }
     .gallery-item.equipment .img-wrap { background: linear-gradient(135deg,#e0f0ff,#b8d9f5); }
@@ -125,7 +131,7 @@
     }
     .lightbox.show { display: flex; }
     .lb-box {
-      background: #fff; border-radius: 16px; max-width: 520px; width: 92%;
+      background:  #fff; border-radius: 16px; max-width: 520px; width: 92%;
       overflow: hidden; animation: popIn .25s ease;
     }
     @keyframes popIn { from { transform: scale(.88); opacity: 0; } to { transform: scale(1); opacity: 1; } }
