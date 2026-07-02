@@ -97,9 +97,56 @@
     .gallery-item.event .img-wrap     { background: linear-gradient(135deg,#fff0d0,#ffe4a0); }
     @media(max-width:900px){ .gallery-grid{ grid-template-columns: repeat(2,1fr); } }
     @media(max-width:480px){ .gallery-grid{ grid-template-columns: 1fr; } }
+ 
+  /* Cost overlay */
+    .gallery-cost {
+      position: absolute; bottom: 42px; left: 0; right: 0;
+      background: linear-gradient(transparent, rgba(5,45,38,.88));
+      padding: 22px 14px 8px;
+      display: flex; justify-content: space-between; align-items: flex-end;
+    }
+    .gallery-cost .cost-label {
+      font-size: 10px; color: rgba(255,255,255,.78);
+      font-weight: 700; text-transform: uppercase; letter-spacing: 1px;
+    }
+    .gallery-cost .cost-value {
+      font-size: 14px; color: #a8edde;
+      font-weight: bold; font-family: Georgia, serif;
+    }
+    figcaption {
+      padding: 9px 13px; font-size: 12px; color: var(--muted);
+      font-weight: 700; background: #fff; border-top: 1px solid var(--border);
+    }
+
+    /* Lightbox */
+    .lightbox {
+      display: none; position: fixed; inset: 0; z-index: 999;
+      background: rgba(0,0,0,.82); align-items: center; justify-content: center;
+    }
+    .lightbox.show { display: flex; }
+    .lb-box {
+      background: #fff; border-radius: 16px; max-width: 520px; width: 92%;
+      overflow: hidden; animation: popIn .25s ease;
+    }
+    @keyframes popIn { from { transform: scale(.88); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+    .lb-img { width: 100%; height: 260px; display: flex; align-items: center; justify-content: center; font-size: 90px; }
+    .lb-body { padding: 22px 26px; }
+    .lb-body h3 { color: var(--teal); font-size: 18px; margin-bottom: 6px; }
+    .lb-body .lb-cost { font-size: 22px; font-weight: bold; color: var(--ink); font-family: Georgia,serif; margin-bottom: 10px; }
+    .lb-body p { font-size: 13px; color: var(--muted); margin-bottom: 18px; }
+    .lb-close {
+      display: block; text-align: center; margin-top: 4px;
+      color: var(--muted); font-size: 13px; cursor: pointer; background: none;
+      border: none; width: 100%; padding: 10px;
+    }
+    .lb-close:hover { color: var(--coral); }
+
+    @media(max-width:960px){ .gallery-grid{ grid-template-columns: repeat(2,1fr); } }
+    @media(max-width:500px){ .gallery-grid{ grid-template-columns: 1fr; } }
   </style>
 </head>
 <body>
+
 
 <header class="site-header">
   <div class="container header-inner">
@@ -143,91 +190,114 @@
       <button class="filter-btn" onclick="filterGallery('event', this)" aria-label="Show event images">Events</button>
     </div>
 
-    <!-- Gallery Grid -->
-    <div class="gallery-grid" id="galleryGrid">
-
-      <figure class="gallery-item facility">
-        <div class="img-wrap" role="img" aria-label="Modern reception area of LifeCare Health hospital">🏥</div>
-        <figcaption>Main Reception & Lobby</figcaption>
+<!-- TEAM -->
+      <figure class="gallery-item team" onclick="openLb('👨‍⚕️','Senior Medical Team','₹800 – ₹1,500 / consult','Consultation with senior specialists. Fee varies by department and doctor seniority. Includes review of reports up to 3 months old.')">
+        <div class="img-wrap" role="img" aria-label="Senior medical team">👨‍⚕️</div>
+        <div class="gallery-cost"><span class="cost-label">Consultation</span><span class="cost-value">From ₹800</span></div>
+        <figcaption>Senior Medical Consultants</figcaption>
       </figure>
 
-      <figure class="gallery-item facility">
-        <div class="img-wrap" role="img" aria-label="LifeCare Health private patient ward">🛏️</div>
-        <figcaption>Private Patient Ward</figcaption>
-      </figure>
-
-      <figure class="gallery-item facility">
-        <div class="img-wrap" role="img" aria-label="LifeCare Health ICU Intensive Care Unit">💉</div>
-        <figcaption>Intensive Care Unit (ICU)</figcaption>
-      </figure>
-
-      <figure class="gallery-item facility">
-        <div class="img-wrap" role="img" aria-label="LifeCare Health modern operating theatre">🩺</div>
-        <figcaption>Modern Operating Theatre</figcaption>
-      </figure>
-
-      <figure class="gallery-item team">
-        <div class="img-wrap" role="img" aria-label="LifeCare Health senior medical team group photo">👨‍⚕️</div>
-        <figcaption>Senior Medical Team</figcaption>
-      </figure>
-
-      <figure class="gallery-item team">
-        <div class="img-wrap" role="img" aria-label="LifeCare Health nursing staff team">👩‍⚕️</div>
+      <figure class="gallery-item team" onclick="openLb('👩‍⚕️','Nursing Staff','Included in room charge','Our nursing team of 300+ trained nurses provides 24-hour bedside care, medication administration and patient monitoring.')">
+        <div class="img-wrap" role="img" aria-label="Nursing staff team">👩‍⚕️</div>
+        <div class="gallery-cost"><span class="cost-label">Nursing Care</span><span class="cost-value">Included</span></div>
         <figcaption>Nursing Staff Team</figcaption>
       </figure>
 
-      <figure class="gallery-item team">
-        <div class="img-wrap" role="img" aria-label="LifeCare Health doctor patient consultation">🤝</div>
-        <figcaption>Doctor-Patient Consultation</figcaption>
+      <figure class="gallery-item team" onclick="openLb('🤝','Doctor-Patient Consultation','₹500 – ₹800 / visit','General physician and junior specialist consultations. Follow-up within 7 days of discharge is free of charge.')">
+        <div class="img-wrap" role="img" aria-label="Doctor patient consultation">🤝</div>
+        <div class="gallery-cost"><span class="cost-label">GP Consultation</span><span class="cost-value">From ₹500</span></div>
+        <figcaption>Doctor–Patient Consultation</figcaption>
       </figure>
 
-      <figure class="gallery-item team">
-        <div class="img-wrap" role="img" aria-label="LifeCare Health emergency response team">🚑</div>
+      <figure class="gallery-item team" onclick="openLb('🚑','Emergency Response Team','₹2,000 – ₹5,000','Emergency stabilisation charges. Ambulance service available at ₹1,200 within city limits. 24×7 rapid response team on standby.')">
+        <div class="img-wrap" role="img" aria-label="Emergency response team">🚑</div>
+        <div class="gallery-cost"><span class="cost-label">Emergency Care</span><span class="cost-value">From ₹2,000</span></div>
         <figcaption>Emergency Response Team</figcaption>
       </figure>
 
-      <figure class="gallery-item equipment">
-        <div class="img-wrap" role="img" aria-label="LifeCare Health MRI scanning machine">🔬</div>
-        <figcaption>MRI Scanner</figcaption>
+      <!-- EQUIPMENT -->
+      <figure class="gallery-item equipment" onclick="openLb('🔬','MRI Scanner (3 Tesla)','₹8,000 – ₹14,000','High-resolution 3 Tesla MRI for brain, spine, joints and body. Contrast MRI available. Reports within 6 hours. NABH-certified radiologists.')">
+        <div class="img-wrap" role="img" aria-label="3 Tesla MRI scanner">🔬</div>
+        <div class="gallery-cost"><span class="cost-label">MRI Scan</span><span class="cost-value">From ₹8,000</span></div>
+        <figcaption>3 Tesla MRI Scanner</figcaption>
       </figure>
 
-      <figure class="gallery-item equipment">
-        <div class="img-wrap" role="img" aria-label="LifeCare Health CT scan diagnostic equipment">🩻</div>
-        <figcaption>CT Scan Equipment</figcaption>
+      <figure class="gallery-item equipment" onclick="openLb('🩻','128-Slice CT Scanner','₹3,500 – ₹9,000','128-slice CT for chest, abdomen, neuro and cardiac imaging. CT Coronary Angiography and CT Angiogram available. Contrast studies included.')">
+        <div class="img-wrap" role="img" aria-label="128-slice CT scan machine">🩻</div>
+        <div class="gallery-cost"><span class="cost-label">CT Scan</span><span class="cost-value">From ₹3,500</span></div>
+        <figcaption>128-Slice CT Scanner</figcaption>
       </figure>
 
-      <figure class="gallery-item equipment">
-        <div class="img-wrap" role="img" aria-label="LifeCare Health diagnostic laboratory equipment">🧪</div>
-        <figcaption>Diagnostic Laboratory</figcaption>
+      <figure class="gallery-item equipment" onclick="openLb('🧪','Diagnostic Laboratory','₹200 – ₹3,000','NABL-accredited lab running 1,200+ tests. Same-day reports for most panels. Home sample collection available at ₹150 extra.')">
+        <div class="img-wrap" role="img" aria-label="NABL accredited diagnostic laboratory">🧪</div>
+        <div class="gallery-cost"><span class="cost-label">Lab Tests</span><span class="cost-value">From ₹200</span></div>
+        <figcaption>NABL Diagnostic Laboratory</figcaption>
       </figure>
 
-      <figure class="gallery-item equipment">
-        <div class="img-wrap" role="img" aria-label="LifeCare Health digital X-ray equipment">📡</div>
+      <figure class="gallery-item equipment" onclick="openLb('📡','Digital X-Ray Suite','₹400 – ₹800','Digital X-ray with instant PACS viewing. Plain X-ray, OPG and fluoroscopy available. Same-day soft-copy reports on email/WhatsApp.')">
+        <div class="img-wrap" role="img" aria-label="Digital X-ray machine">📡</div>
+        <div class="gallery-cost"><span class="cost-label">X-Ray</span><span class="cost-value">From ₹400</span></div>
         <figcaption>Digital X-Ray Suite</figcaption>
       </figure>
 
-      <figure class="gallery-item event">
-        <div class="img-wrap" role="img" aria-label="LifeCare Health annual health camp community event">🌍</div>
+      <!-- EVENTS -->
+      <figure class="gallery-item event" onclick="openLb('🌍','Annual Health Camp 2025','Free for community','Free health screenings, blood tests, BP & sugar checks for 2,000+ patients. Held every December. Register via our website.')">
+        <div class="img-wrap" role="img" aria-label="Annual community health camp">🌍</div>
+        <div class="gallery-cost"><span class="cost-label">Community Camp</span><span class="cost-value">Free</span></div>
         <figcaption>Annual Health Camp 2025</figcaption>
       </figure>
 
-      <figure class="gallery-item event">
-        <div class="img-wrap" role="img" aria-label="LifeCare Health medical staff training workshop">📚</div>
-        <figcaption>Medical Staff Training</figcaption>
+      <figure class="gallery-item event" onclick="openLb('📚','Medical Staff Training','Internal programme','CME workshops, skill labs and simulation training held quarterly. Open to registered healthcare professionals. Certificate provided.')">
+        <div class="img-wrap" role="img" aria-label="Medical staff training workshop">📚</div>
+        <div class="gallery-cost"><span class="cost-label">CME / Training</span><span class="cost-value">Internal</span></div>
+        <figcaption>CME & Staff Training</figcaption>
       </figure>
 
-      <figure class="gallery-item event">
-        <div class="img-wrap" role="img" aria-label="LifeCare Health blood donation camp">🩸</div>
-        <figcaption>Blood Donation Camp</figcaption>
+      <figure class="gallery-item event" onclick="openLb('🩸','Blood Donation Camp','Free — earn rewards','Voluntary blood donation drives held every quarter. Donors receive free CBC & sugar test, refreshments and a certificate of appreciation.')">
+        <div class="img-wrap" role="img" aria-label="Blood donation camp">🩸</div>
+        <div class="gallery-cost"><span class="cost-label">Blood Donation</span><span class="cost-value">Free</span></div>
+        <figcaption>Blood Donation Drive</figcaption>
       </figure>
 
-      <figure class="gallery-item event">
-        <div class="img-wrap" role="img" aria-label="LifeCare Health World Health Day celebration">🎗️</div>
+      <figure class="gallery-item event" onclick="openLb('🎗️','World Health Day 2026','Free public event','Seminars, screenings and awareness sessions open to all. Guest lectures by senior consultants. Free BP, BMI and eye check-up stalls.')">
+        <div class="img-wrap" role="img" aria-label="World Health Day celebration event">🎗️</div>
+        <div class="gallery-cost"><span class="cost-label">Public Event</span><span class="cost-value">Free</span></div>
         <figcaption>World Health Day 2026</figcaption>
       </figure>
 
     </div>
+
+    <p style="text-align:center;color:var(--muted);font-size:13px;margin-top:28px;">
+      💡 <strong>Tip:</strong> Click any card to see details and estimated costs. All prices are indicative; contact us for a personalised quote.
+    </p>
   </section>
+
+  <!-- CTA -->
+  <section class="highlight-band">
+    <div class="container">
+      <h2>Want a Detailed Cost Estimate?</h2>
+      <p>Our medical coordinators will walk you through treatment options and provide a personalised cost plan — free of charge.</p>
+      <a class="btn btn-coral" href="packages.html">View All Packages</a>
+      &nbsp;&nbsp;
+      <a class="btn btn-outline" href="appointment.html">Book Appointment</a>
+    </div>
+  </section>
+</main>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox" onclick="closeLb(event)" role="dialog" aria-modal="true" aria-label="Gallery detail">
+  <div class="lb-box">
+    <div class="lb-img" id="lbIcon"></div>
+    <div class="lb-body">
+      <h3 id="lbTitle"></h3>
+      <div class="lb-cost" id="lbCost"></div>
+      <p id="lbDesc"></p>
+      <a class="btn" href="appointment.html" style="width:100%;text-align:center;display:block;">Book / Enquire</a>
+      <button class="lb-close" onclick="document.getElementById('lightbox').classList.remove('show')">✕ Close</button>
+    </div>
+  </div>
+</div>
+
 
 </main>
 
@@ -268,5 +338,18 @@
 </footer>
 
 <script src="script.js"></script>
+<script>
+  function openLb(icon, title, cost, desc) {
+    document.getElementById('lbIcon').textContent  = icon;
+    document.getElementById('lbTitle').textContent = title;
+    document.getElementById('lbCost').textContent  = cost;
+    document.getElementById('lbDesc').textContent  = desc;
+    document.getElementById('lightbox').classList.add('show');
+  }
+  function closeLb(e) {
+    if (e.target === document.getElementById('lightbox'))
+      document.getElementById('lightbox').classList.remove('show');
+  }
+</script>
 </body>
 </html>
