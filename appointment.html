@@ -133,7 +133,7 @@
       <div>
         <span class="section-label">Online Booking</span>
         <h2>Request Your Appointment</h2>
-        <p class="u-muted-mb-28">All fields marked with * are required. Our team will call you to confirm your slot.</p>
+        <p style="color:var(--muted);margin-bottom:28px;">All fields marked with * are required. Our team will call you to confirm your slot.</p>
 
         <div class="form-wrap">
           <form id="appointmentForm" novalidate>
@@ -167,10 +167,11 @@
                   <option>Neurology</option>
                   <option>Orthopaedics</option>
                   <option>Paediatrics</option>
-                  <option>Gynaecology</option>
-                  <option>Oncology</option>
-                  <option>Ophthalmology</option>
                   <option>Dental</option>
+                  <option>Ophthalmology</option>
+                  <option>Radiology</option>
+                  <option>Gynaecology &amp; Obstetrics</option>
+                  <option>Oncology</option>
                   <option>Pulmonology</option>
                   <option>General Medicine</option>
                 </select>
@@ -182,14 +183,38 @@
               </div>
 
               <div class="form-group full">
+                <label for="apptPackage">Interested in a Package / Treatment? (optional)</label>
+                <select id="apptPackage">
+                  <option value="">No preference / Not sure</option>
+                  <optgroup label="Preventive Care Packages (all departments)">
+                    <option>Basic Health Screening</option>
+                    <option>Executive Full Body Checkup</option>
+                    <option>Cardiac Care Package</option>
+                    <option>Women's Wellness Package</option>
+                    <option>Senior Citizen Package</option>
+                    <option>Diabetes Management Package</option>
+                  </optgroup>
+                  <optgroup id="deptTreatGroup" label="Treatments — select a department first">
+                  </optgroup>
+                </select>
+                <p class="form-hint" id="apptPackageHint">Preventive packages are available to everyone. Choose a department above to also see treatments specific to it, or see the full list on our <a href="packages.html">Packages &amp; Treatments</a> page.</p>
+              </div>
+
+              <div class="form-group full conditional-group" id="prescriptionGroup">
+                <label for="apptPrescription">Upload Prescription (optional)</label>
+                <input type="file" id="apptPrescription" accept=".pdf,.jpg,.jpeg,.png">
+                <p class="form-hint">If you have a doctor's prescription related to your selected package or treatment, you can attach it here — this helps our specialists prepare for your visit. Accepted formats: PDF, JPG, PNG.</p>
+              </div>
+
+              <div class="form-group full">
                 <label for="apptSymptoms">Symptoms / Reason for Visit</label>
                 <textarea id="apptSymptoms" rows="4" placeholder="Briefly describe your symptoms or reason for the appointment"></textarea>
               </div>
 
             </div>
 
-            <button class="btn btn-coral" type="submit" class="u-btn-full">Submit Appointment Request</button>
-            <p id="apptMessage" class="result u-hidden" role="alert"></p>
+            <button class="btn btn-coral" type="submit" style="width:100%;margin-top:8px;font-size:16px;">Submit Appointment Request</button>
+            <p id="apptMessage" class="result" style="display:none;" role="alert"></p>
           </form>
         </div>
       </div>
@@ -312,6 +337,14 @@
     origForm.addEventListener('submit', () => {
       if (apptMsg) apptMsg.style.display = 'block';
     }, true);
+  }
+ // Show the prescription upload field only when a package/treatment is chosen
+  const apptPackageSelect = document.getElementById('apptPackage');
+  const prescriptionGroup = document.getElementById('prescriptionGroup');
+  if (apptPackageSelect && prescriptionGroup) {
+    apptPackageSelect.addEventListener('change', function () {
+      prescriptionGroup.classList.toggle('open', this.value !== '');
+    });
   }
 </script>
 </body>
