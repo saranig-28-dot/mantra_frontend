@@ -64,6 +64,9 @@ Open `index.html` in any browser — no build step required.
 4. Click **Add new site → Import an existing project**.
 5. Connect your GitHub repository.
 6. Click **Deploy** — Netlify will publish the site automatically.
-
+Seoptimer analysis:-
+https://www.seoptimer.com/lifecare-hospital-best-treatments.netlify.app
+nelify or wesite link:-
+https://lifecare-hospital-best-treatments.netlify.app/
 ---
 © 2026 LifeCare Health. Designed for MANTRA 2026 Summer School.
