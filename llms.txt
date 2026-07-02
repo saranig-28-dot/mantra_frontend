@@ -1,0 +1,28 @@
+# LifeCare Health
+
+> LifeCare Health is a multi-speciality hospital offering expert medical
+> care across cardiology, neurology, orthopaedics, paediatrics and more,
+> combining modern facilities with a patient-first approach.
+
+LifeCare Health operates 12 medical departments staffed by 120+ doctors,
+treats 25,000+ patients, and provides 24/7 emergency care. The hospital is
+accredited by NABH (National Accreditation Board for Hospitals) and is
+empanelled with major insurance providers in India.
+
+## Key pages
+
+- [Home](https://life-care-health.netlify.app/index.html): Overview of LifeCare Health, key statistics and highlights.
+- [About](https://life-care-health.netlify.app/about.html): Hospital story, mission, vision and core values.
+- [Departments](https://life-care-health.netlify.app/departments.html): Full list of medical departments and services offered.
+- [Doctors](https://life-care-health.netlify.app/doctors.html): Profiles of senior consultants and specialists.
+- [Packages & Treatments](https://life-care-health.netlify.app/packages.html): Health check-up packages and department-wise treatment/procedure cost estimates.
+- [Treatment Packages](https://life-care-health.netlify.app/packages.html): Transparent pricing for common treatment packages.
+- [Gallery](https://life-care-health.netlify.app/gallery.html): Photos of facilities, equipment, team and events.
+- [Appointment](https://life-care-health.netlify.app/appointment.html): Online appointment booking form and FAQs.
+- [Contact](https://life-care-health.netlify.app/contact.html): Address, phone numbers, OPD hours and emergency helpline.
+
+## Contact
+
+- Emergency helpline: 1800-100-200 (24/7)
+- General enquiries: +91-1132642125
+- Email: info@lifecarehealth.com

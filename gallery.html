@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hospital Gallery | LifeCare Health</title>
+  <meta name="description" content="Explore LifeCare Health's gallery showcasing our modern facilities, medical equipment, team events and patient care areas.">
+  <meta name="keywords" content="hospital gallery, medical facilities, healthcare images, hospital photos">
+  <link rel="canonical" href="https://life-care-health.netlify.app/gallery.html">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="LifeCare Health">
+  <meta property="og:title" content="Hospital Gallery | LifeCare Health">
+  <meta property="og:description" content="Explore LifeCare Health's gallery showcasing our modern facilities, medical equipment, team events and patient care areas.">
+  <meta property="og:url" content="https://life-care-health.netlify.app/gallery.html">
+  <meta property="og:image" content="https://life-care-health.netlify.app/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="en_IN">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Hospital Gallery | LifeCare Health">
+  <meta name="twitter:description" content="Explore LifeCare Health's gallery showcasing our modern facilities, medical equipment, team events and patient care areas.">
+  <meta name="twitter:image" content="https://life-care-health.netlify.app/og-image.png">
+
+  <!-- Favicons -->
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="manifest" href="site.webmanifest">
+  <meta name="theme-color" content="#0a7c6e">
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Hospital",
+    "name": "LifeCare Health",
+    "url": "https://life-care-health.netlify.app/",
+    "logo": "https://life-care-health.netlify.app/icon-512.png",
+    "image": "https://life-care-health.netlify.app/og-image.png",
+    "description": "LifeCare Health is a multi-speciality hospital offering expert medical care across cardiology, neurology, orthopaedics, paediatrics and more.",
+    "telephone": "+91-1132642125",
+    "email": "info@lifecarehealth.com",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Sector 27",
+      "addressLocality": "La La Land",
+      "postalCode": "100001",
+      "addressCountry": "IN"
+    },
+    "medicalSpecialty": [
+      "Cardiology", "Neurology", "Orthopaedic", "Pediatric",
+      "Dentistry", "Ophthalmic", "Oncologic", "Pulmonary", "Gynecologic"
+    ],
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+        "opens": "09:00",
+        "closes": "18:00"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Saturday"],
+        "opens": "09:00",
+        "closes": "14:00"
+      }
+    ],
+    "sameAs": []
+  }
+  </script>
+
+  <!-- Google Analytics (GA4) — replace G-XXXXXXXXXX with your Measurement ID -->
+  <!--
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  </script>
+  -->
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .gallery-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+    .gallery-item { border-radius: 12px; overflow: hidden; box-shadow: var(--shadow); transition: transform .25s, opacity .3s; }
+    .gallery-item:hover { transform: scale(1.03); }
+    .gallery-item .img-wrap { width:100%; height:170px; display:flex; align-items:center; justify-content:center; font-size:56px; }
+    .gallery-item figcaption { padding:10px 14px; font-size:12px; color:var(--muted); font-weight:600; background:#fff; }
+    .gallery-item.facility .img-wrap  { background: linear-gradient(135deg,#c8ece8,#a0ddd7); }
+    .gallery-item.team .img-wrap      { background: linear-gradient(135deg,#fce4e1,#f9c5c0); }
+    .gallery-item.equipment .img-wrap { background: linear-gradient(135deg,#e0f0ff,#b8d9f5); }
+    .gallery-item.event .img-wrap     { background: linear-gradient(135deg,#fff0d0,#ffe4a0); }
+    @media(max-width:900px){ .gallery-grid{ grid-template-columns: repeat(2,1fr); } }
+    @media(max-width:480px){ .gallery-grid{ grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="logo" href="index.html">LifeCare <span>Health</span></a>
+    <button class="menu-btn" id="menuBtn" aria-label="Toggle navigation">☰</button>
+    <nav class="nav-links" id="navLinks">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="departments.html">Departments</a>
+      <a href="doctors.html">Doctors</a>
+      <a href="packages.html">Packages &amp; Treatments</a>
+      <a href="gallery.html" class="active">Gallery</a>
+      <a href="appointment.html">Appointment</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <section class="page-banner">
+    <div class="container">
+      <h1>Gallery</h1>
+      <p>A look inside LifeCare Health's facilities, team and events.</p>
+    </div>
+  </section>
+
+  <section class="container section">
+    <div class="section-head center">
+      <span class="section-label">Our Space</span>
+      <h2>Inside LifeCare Health</h2>
+      <p class="section-intro">Browse our facilities, meet our team, and see our modern medical equipment in action.</p>
+    </div>
+
+    <!-- Filter Buttons -->
+    <div class="filter-buttons">
+      <button class="filter-btn active" onclick="filterGallery('all', this)" aria-label="Show all gallery images">All</button>
+      <button class="filter-btn" onclick="filterGallery('facility', this)" aria-label="Show facility images">Facilities</button>
+      <button class="filter-btn" onclick="filterGallery('team', this)" aria-label="Show team images">Our Team</button>
+      <button class="filter-btn" onclick="filterGallery('equipment', this)" aria-label="Show equipment images">Equipment</button>
+      <button class="filter-btn" onclick="filterGallery('event', this)" aria-label="Show event images">Events</button>
+    </div>
+
+    <!-- Gallery Grid -->
+    <div class="gallery-grid" id="galleryGrid">
+
+      <figure class="gallery-item facility">
+        <div class="img-wrap" role="img" aria-label="Modern reception area of LifeCare Health hospital">🏥</div>
+        <figcaption>Main Reception & Lobby</figcaption>
+      </figure>
+
+      <figure class="gallery-item facility">
+        <div class="img-wrap" role="img" aria-label="LifeCare Health private patient ward">🛏️</div>
+        <figcaption>Private Patient Ward</figcaption>
+      </figure>
+
+      <figure class="gallery-item facility">
+        <div class="img-wrap" role="img" aria-label="LifeCare Health ICU Intensive Care Unit">💉</div>
+        <figcaption>Intensive Care Unit (ICU)</figcaption>
+      </figure>
+
+      <figure class="gallery-item facility">
+        <div class="img-wrap" role="img" aria-label="LifeCare Health modern operating theatre">🩺</div>
+        <figcaption>Modern Operating Theatre</figcaption>
+      </figure>
+
+      <figure class="gallery-item team">
+        <div class="img-wrap" role="img" aria-label="LifeCare Health senior medical team group photo">👨‍⚕️</div>
+        <figcaption>Senior Medical Team</figcaption>
+      </figure>
+
+      <figure class="gallery-item team">
+        <div class="img-wrap" role="img" aria-label="LifeCare Health nursing staff team">👩‍⚕️</div>
+        <figcaption>Nursing Staff Team</figcaption>
+      </figure>
+
+      <figure class="gallery-item team">
+        <div class="img-wrap" role="img" aria-label="LifeCare Health doctor patient consultation">🤝</div>
+        <figcaption>Doctor-Patient Consultation</figcaption>
+      </figure>
+
+      <figure class="gallery-item team">
+        <div class="img-wrap" role="img" aria-label="LifeCare Health emergency response team">🚑</div>
+        <figcaption>Emergency Response Team</figcaption>
+      </figure>
+
+      <figure class="gallery-item equipment">
+        <div class="img-wrap" role="img" aria-label="LifeCare Health MRI scanning machine">🔬</div>
+        <figcaption>MRI Scanner</figcaption>
+      </figure>
+
+      <figure class="gallery-item equipment">
+        <div class="img-wrap" role="img" aria-label="LifeCare Health CT scan diagnostic equipment">🩻</div>
+        <figcaption>CT Scan Equipment</figcaption>
+      </figure>
+
+      <figure class="gallery-item equipment">
+        <div class="img-wrap" role="img" aria-label="LifeCare Health diagnostic laboratory equipment">🧪</div>
+        <figcaption>Diagnostic Laboratory</figcaption>
+      </figure>
+
+      <figure class="gallery-item equipment">
+        <div class="img-wrap" role="img" aria-label="LifeCare Health digital X-ray equipment">📡</div>
+        <figcaption>Digital X-Ray Suite</figcaption>
+      </figure>
+
+      <figure class="gallery-item event">
+        <div class="img-wrap" role="img" aria-label="LifeCare Health annual health camp community event">🌍</div>
+        <figcaption>Annual Health Camp 2025</figcaption>
+      </figure>
+
+      <figure class="gallery-item event">
+        <div class="img-wrap" role="img" aria-label="LifeCare Health medical staff training workshop">📚</div>
+        <figcaption>Medical Staff Training</figcaption>
+      </figure>
+
+      <figure class="gallery-item event">
+        <div class="img-wrap" role="img" aria-label="LifeCare Health blood donation camp">🩸</div>
+        <figcaption>Blood Donation Camp</figcaption>
+      </figure>
+
+      <figure class="gallery-item event">
+        <div class="img-wrap" role="img" aria-label="LifeCare Health World Health Day celebration">🎗️</div>
+        <figcaption>World Health Day 2026</figcaption>
+      </figure>
+
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <div class="footer-logo">LifeCare <span>Health</span></div>
+        <p>A trusted multi-speciality healthcare provider committed to delivering compassionate, world-class medical services to every patient.</p>
+      </div>
+      <div class="footer-col">
+        <h3>Quick Links</h3>
+        <a href="about.html">About Us</a>
+        <a href="departments.html">Departments</a>
+        <a href="doctors.html">Our Doctors</a>
+        <a href="packages.html">Packages &amp; Treatments</a>
+        <a href="appointment.html">Book Appointment</a>
+      </div>
+      <div class="footer-col">
+        <h3>Departments</h3>
+        <a href="departments.html">Cardiology</a>
+        <a href="departments.html">Neurology</a>
+        <a href="departments.html">Orthopaedics</a>
+        <a href="departments.html">Paediatrics</a>
+      </div>
+      <div class="footer-col">
+        <h3>Contact</h3>
+        <p>📧 <a href="#" class="e-mail" data-u="info" data-d="lifecarehealth.com" aria-label="Email LifeCare Health">Email Us</a></p>
+        <p>📞 +91-1132642125</p>
+        <p>🚨 Emergency: 1800-100-200</p>
+        <p>📍 La La Land, India</p>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 LifeCare Health. Designed for MANTRA 2026 Summer School.</p>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
