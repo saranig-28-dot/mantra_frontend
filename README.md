@@ -65,8 +65,11 @@ Open `index.html` in any browser — no build step required.
 5. Connect your GitHub repository.
 6. Click **Deploy** — Netlify will publish the site automatically.
 Seoptimer analysis:-
-https://www.seoptimer.com/lifecare-hospital-best-treatments.netlify.app
+https://www.seoptimer.com/lifecare-health-treatments.netlify.app
 nelify or wesite link:-
-https://lifecare-hospital-best-treatments.netlify.app/
+https://lifecare-healthtreatments.netlify.app/
+tawk.to: my email:- saraniganji849@gmail.com
+password:- Sarani@19
+i created AI agent and widget and updated in code but i am not able to show it in website so i gave my tawk.to acc please find my ai agent and widget.
 ---
 © 2026 LifeCare Health. Designed for MANTRA 2026 Summer School.
